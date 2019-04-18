@@ -216,3 +216,25 @@ chrome.storage.local.set({color: '#3aa757'}, function() {
 - Background scripts 和 其他重要的 components 必须在 manifest 中注册
 - 要实现外域（外网）访问，需要在 permission 中加入要访问的 域名，用通配符
 
+## Chrome Extension 国际化
+
+[Tutorial](https://developer.chrome.com/webstore/i18n)
+
+[Doc](https://developer.chrome.com/extensions/i18n)
+
+## bootstrap-material-design + Chrome Extension
+
+注意，在导入 bootstrap 的过程中，js 应该按照以下的顺序导入（不能乱序）：
+
+```html
+<script src="static/js/jquery-2.0.3.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap-material-design.js"></script>
+```
+
+另外，由于 Chrome Extension 规定了 html 代码中不能有动态执行的 js 代码，所以我们需要在 popup.js 加入以下的代码，使得 bootstrap 起作用：
+
+```JavaScript
+$(document).ready(function() { $('body').bootstrapMaterialDesign(); });
+```
+
